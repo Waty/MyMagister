@@ -1,5 +1,7 @@
 package com.wart.magister;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -22,6 +24,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private static final String STATE_LOGGED_IN = "logged_in";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                                 getString(R.string.title_section1),
                                 getString(R.string.title_section2),
                                 getString(R.string.title_section3),
+                                getString(R.string.title_section4),
                         }),
                 this);
+        SharedPreferences settings = getPreferences(MODE_PRIVATE);
+
+        //If the user isn't yet logged in, do that first
+        if(!settings.getBoolean(STATE_LOGGED_IN,false)) startActivity(new Intent(this, SelectSchoolActivity.class));
     }
+
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {

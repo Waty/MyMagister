@@ -34,6 +34,7 @@ public class TeaEncryption {
     private void setPassphrase(String passphrase) throws SecurityException {
         if (passphrase == null || passphrase.length() < 1) {
             LastError = "Invalid passphrase.";
+            throw new SecurityException(LastError);
         }
 
         int charcount = 0;
@@ -45,8 +46,8 @@ public class TeaEncryption {
 
         try {
             pass = passphrase.toLowerCase(Locale.ENGLISH).getBytes("UTF-8");
-        } catch (UnsupportedEncodingException var15) {
-            var15.printStackTrace();
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
         }
 
         for (int i = 0; i < passphrase.length(); i++) {
@@ -145,6 +146,7 @@ public class TeaEncryption {
         int var3 = 255 & var1[0] | (255 & var1[1]) << 8 | (255 & var1[2]) << 16 | (255 & var1[3]) << 24;
         if (var2 != requiredSize(var3)) {
             LastError = "De data kon niet ontsleuteld worden.";
+            throw new SecurityException(LastError);
         }
 
         byte[] var4 = new byte[var3];
