@@ -1,4 +1,4 @@
-package com.wart.magister;
+package com.wart.magister.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
@@ -6,8 +6,8 @@ import java.util.Locale;
 public class TeaEncryption {
 
     public static final int BLOCKSIZE = 16384;
-    public static String LastError = "";
     private static byte[] buffer = new byte[BLOCKSIZE];
+    public static String LastError = "";
     private final int CYCLES = 32;
     private int[] _key = new int[4];
 
@@ -59,7 +59,7 @@ public class TeaEncryption {
                 byte var10 = (byte) (c ^ (y & 255) << 1 ^ (y & 255) >>> 1);
                 int[] var11 = _key;
                 int var12 = (charcount & 0xF) >>> 2;
-                var11[var12] &= msk ^ -1;
+                var11[var12] &= ~msk;
                 int var13 = msk & (var10 & 255) << ofs | _key[(charcount & 15) >>> 2];
                 _key[(charcount & 0xF) >>> 2] = var13;
                 ++charcount;

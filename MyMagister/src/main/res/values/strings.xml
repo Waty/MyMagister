@@ -7,8 +7,10 @@
     <string name="title_section3">Cijfers</string>
     <string name="title_section4">Huiswerk</string>
     <string name="action_settings">Settings</string>
-
     <string name="title_activity_select_school">Selecteer nu uw school</string>
     <string name="select_school_edittext_hint">Type hier de naam van uw school</string>
+    <string name="select_school_statustext">Retrieving schools...</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

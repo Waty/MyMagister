@@ -17,14 +17,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.wart.magister.SelectSchoolActivity"
+            android:label="@string/title_activity_select_school"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name="com.wart.magister.LoginActivity"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateVisible"></activity>
+            android:parentActivityName=".SelectSchoolActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectSchoolActivity" />
+        </activity>
         <activity
-            android:name="com.wart.magister.SelectSchoolActivity"
-            android:label="@string/title_activity_select_school"></activity>
+            android:name="com.wart.magister.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 </manifest>
